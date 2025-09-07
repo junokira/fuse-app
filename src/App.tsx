@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Route, State } from "./types";
+import type { Profile, Route } from "./types";
 import { runSelfTests } from "./lib/utils";
 import { loadState, saveStateDebounced } from "./lib/state";
 import Feed from "./pages/Feed";
