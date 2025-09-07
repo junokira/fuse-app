@@ -1,4 +1,4 @@
-import type { State } from "../types";
+import type { Profile, Post, Tab } from "../types";
 
 export default function FeedComponent({ state }: { state: State }) {
   // Legacy placeholder to satisfy imports if referenced.
