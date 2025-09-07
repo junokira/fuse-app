@@ -1,5 +1,5 @@
 import { supabase } from "./supabase";
-import type { Post, Profile, Like } from "../types";
+import type { Post, Profile } from "../types";
 
 //
 // Posts
@@ -58,6 +58,16 @@ export async function fetchFollowing(user_id: string) {
 
   if (error) throw error;
   return data.map((f) => f.following_id) as string[];
+}
+
+export async function fetchFollowers(user_id: string) {
+  const { data, error } = await supabase
+    .from("follows")
+    .select("follower_id")
+    .eq("following_id", user_id);
+
+  if (error) throw error;
+  return data.map((f) => f.follower_id) as string[];
 }
 
 export async function followUser(follower_id: string, following_id: string) {
