@@ -10,7 +10,7 @@ type Props = {
   onOpenProfile: (id: string) => void;
 };
 
-export default function PostCard({ post, me, liked, onLike, onOpenProfile }: Props) {
+export default function PostCard({ post, liked, onLike, onOpenProfile }: Props) {
   const user = post.profiles;
 
   return (
