@@ -1,18 +1,22 @@
-import type { UserProfile } from "../types";
+import type { Profile } from "../types";
 
-export default function Avatar({ user, size = 40, onClick }: { user: UserProfile; size?: number; onClick?: () => void }) {
-  const initials = (user.fullName || user.username).split(/\s+/).map(s => s[0]?.toUpperCase()).slice(0, 2).join("");
+export default function Avatar({ user, onClick, size = 44 }: { user: Profile; onClick?: () => void; size?: number }) {
   return (
     <button
       onClick={onClick}
-      className="inline-flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-100"
+      className="shrink-0 rounded-full overflow-hidden"
       style={{ width: size, height: size }}
-      aria-label={`${user.fullName}'s avatar`}
     >
-      {user.avatarUrl ? (
-        <img src={user.avatarUrl} alt={user.fullName} className="w-full h-full rounded-full object-cover" />
+      {user.avatar_url ? (
+        <img
+          src={user.avatar_url}
+          alt={user.full_name}
+          className="w-full h-full object-cover"
+        />
       ) : (
-        <span className="text-sm font-medium">{initials}</span>
+        <div className="bg-zinc-300 w-full h-full flex items-center justify-center">
+          {user.full_name[0]}
+        </div>
       )}
     </button>
   );
